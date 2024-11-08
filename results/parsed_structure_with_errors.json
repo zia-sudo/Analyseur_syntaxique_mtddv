@@ -1,0 +1,119 @@
+{
+    "parsed_structure": [
+        {
+            "type": "instruction",
+            "value": "I"
+        },
+        {
+            "type": "si",
+            "condition": "0",
+            "content": [
+                {
+                    "type": "instruction",
+                    "value": "I"
+                },
+                {
+                    "type": "si",
+                    "condition": "2",
+                    "content": []
+                },
+                {
+                    "type": "si",
+                    "condition": "1",
+                    "content": [
+                        {
+                            "type": "instruction",
+                            "value": "D"
+                        },
+                        {
+                            "type": "instruction",
+                            "value": "I"
+                        },
+                        {
+                            "type": "boucle",
+                            "content": [
+                                {
+                                    "type": "si",
+                                    "condition": "0",
+                                    "content": [
+                                        {
+                                            "type": "fin"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "si",
+                                    "condition": "1",
+                                    "content": [
+                                        {
+                                            "type": "instruction",
+                                            "value": "0"
+                                        },
+                                        {
+                                            "type": "instruction",
+                                            "value": "I"
+                                        },
+                                        {
+                                            "type": "instruction",
+                                            "value": "D"
+                                        },
+                                        {
+                                            "type": "instruction",
+                                            "value": "I"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "boucle",
+                    "content": [
+                        {
+                            "type": "si",
+                            "condition": "0",
+                            "content": [
+                                {
+                                    "type": "instruction",
+                                    "value": "G"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "si",
+                            "condition": "1",
+                            "content": [
+                                {
+                                    "type": "fin"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "instruction",
+                    "value": "I"
+                },
+                {
+                    "type": "end_marker",
+                    "value": "#"
+                }
+            ]
+        }
+    ],
+    "errors": [
+        {
+            "error": "Invalid condition in 'si' statement.",
+            "position": 10
+        },
+        {
+            "error": "Missing closing '}' for 'si' block",
+            "position": 51
+        },
+        {
+            "error": "Expected '}' to close 'si' block",
+            "position": 51
+        }
+    ]
+}
