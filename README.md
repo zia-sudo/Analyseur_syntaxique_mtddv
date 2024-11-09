@@ -40,9 +40,25 @@ Le module doit effectuer un **parsing** du code source, c'est-à-dire qu'il doit
 
 #### 2. **Gestion des erreurs** :
 
-Lors de l'analyse, le module détecte les erreurs courantes:
-- **Bloc non fermés**: Boucles ou conditions sans fermetures appropriées.
-- **Conditions mal formées** dans la structure "si"
+Dans le Module 1 de notre analyseur syntaxique, la gestion des erreurs est un aspect essentiel qui vise à identifier, enregistrer et signaler les erreurs rencontrées dans le code source d’un programme de la machine de Turing de M. del Vigna (MTddV). Cette gestion permet de s'assurer que le programme respecte les règles syntaxiques spécifiques avant son passage au Module 2, responsable de la génération des pré et post-conditions.
+
+##### Objectifs de la Gestion des Erreurs:
+- **Détection proactive des erreurs** : Identifier toute anomalie syntaxique au moment où elle est rencontrée.
+- **Précision dans le rapport des erreurs** : Enregistrer le type exact d’erreur et sa position pour permettre un retour clair à l’utilisateur.
+- **Robustesse de l’analyse** : Assurer que le programme peut continuer l’analyse, même après une erreur, afin d'identifier toutes les erreurs possibles dans un seul passage.
+- **Création d’un rapport d’erreurs** : Générer un fichier ou une structure de données récapitulant toutes les erreurs détectées pour une lecture et une résolution simplifiées.
+##### Types d'Erreurs Détectées
+1. **Erreurs de Syntaxe des Structures de Contrôle**
+Boucles non fermées (boucle sans fin ou sans }) : Chaque bloc boucle doit être correctement clôturé. Une boucle non fermée est signalée comme une erreur avec la position du début de la boucle non clôturée.
+Conditions non fermées (si sans }) : Les blocs si doivent également être correctement fermés avec }. Une condition sans fermeture appropriée génère une erreur.
+Instructions fin en dehors de boucle : L’instruction fin doit obligatoirement être dans une boucle. Toute instruction fin hors d’un bloc boucle est considérée comme une erreur de syntaxe.
+2. **Erreurs dans les Conditions**
+Condition mal formée dans si : Une condition doit être représentée par 0 ou 1. Si une autre valeur est rencontrée ou si la syntaxe est incorrecte, cela génère une erreur.
+Parenthèses manquantes : Dans les blocs conditionnels, les parenthèses sont nécessaires pour indiquer la condition (si (0) {...}). Si une parenthèse ouvrante ou fermante est manquante, l’erreur est détectée et signalée.
+3. **Erreur de Syntaxe Générale**
+Instruction inconnue : Si une instruction ne correspond à aucune instruction reconnue (I, P, G, D, 0, 1, si, boucle, fin, #), elle est signalée comme une erreur.
+4. **Erreur de Fin de Programme**
+Marqueur de fin manquant : Le programme doit se terminer par un #. Si ce symbole est absent ou mal placé, une erreur est signalée.
 
 #### 3. **Interfaces et Formats Utilisés** :
 **Interface du Module 1** :
