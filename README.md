@@ -62,8 +62,8 @@ Marqueur de fin manquant : Le programme doit se terminer par un #. Si ce symbole
 
 #### 3. **Interfaces et Formats Utilisés** :
 **Interface du Module 1** :
-**Entrée** : Le code source du programme MTddV sous forme de chaîne de caractères lue à partir d’un fichier.
-**Sortie** : Une structure de données représentant le programme sous forme de JSON.
+**Entrée** : Le code source du programme MTddV sous forme de chaîne de caractères lue à partir d’un fichier TS.(err_programme_mtddv.ts ou programme_mtddv.ts)
+**Sortie** : Une structure de données représentant le programme sous forme de JSON. Le contenu JSON est sauvegardé dans un fichier spécifique dans le dossier `results`(parsed_structure_with_errors.json ou parsed_structure_valid.json)
 
 #### 4. Librairies utilisées et justification des choix 
 **re**(expression réugulière): pour la tokenisation et la segmentation du code source. **re** est choisi pour sa flexibilité et sa puissance dans le traitement de la segmentation des tokens de texte complexes mais aussi sa facilité d'utilisation.
@@ -73,31 +73,53 @@ Marqueur de fin manquant : Le programme doit se terminer par un #. Si ce symbole
 #### 5. **Spécifications des Fonctions**
 
 `tokenize()` 
-*Description* : transforme le code source en une liste de jetons *Paramètre* : chaîne de caractères du `code`
-*Retour* : liste de tokens
+- *Description* : transforme le code source en une liste de jetons
+- *Paramètre* : chaîne de caractères du `code`
+- *Retour* : liste de tokens
 
 `current_token()`
-*Description* : renvoie le token actuel en cours ou `None` si tous les tokens ont été traités
-*Paramètre* : sans paramètre
-*Retour* : Token actuel
+- *Description* : renvoie le token actuel en cours ou `None` si tous les tokens ont été traités
+- *Paramètre* : sans paramètre
+- *Retour* : Token actuel
 
 `advance()`
-*Description* : fait avancer l'analyse au token suivant
-*Paramètre* : sans paramètre
-*Retour* : Aucun
+- *Description* : fait avancer l'analyse au token suivant
+- *Paramètre* : sans paramètre
+- *Retour* : Aucun
 
 `parse()`
-*Description* : analyse la structure globale et renvoie une liste structurée
-*Paramètre* : sans paramètre
-*Retour* : Arborescence JSON et erreurs éventuelles
+- *Description* : analyse la structure globale et renvoie une liste structurée
+- *Paramètre* : sans paramètre
+- *Retour* : Arborescence JSON et erreurs éventuelles
 
 `parse_instruction()`
-*Description* : analyse une instruction spécifique et retourne sa représentation
-*Paramètre* : sans paramètre
-*Retour* : Dictionnaire représentant l’instruction ou une erreur
+- *Description* : analyse une instruction spécifique et retourne sa représentation
+- *Paramètre* : sans paramètre
+- *Retour* : Dictionnaire représentant l’instruction ou une erreur
 
 `parse_condition()`
-*Description* : traite les conditions dans les instructions `si`
-*Paramètre* : sans paramètre
-*Retour* : Condition sous forme de chaîne ou erreur si mal formée
+- *Description* : traite les conditions dans les instructions `si`
+- *Paramètre* : sans paramètre
+- *Retour* : Condition sous forme de chaîne ou erreur si mal formée
 
+## Structure des fichiers du projet
+
+**analyseur_syntaxique.ipynb** :
+
+C’est un notebook Jupyter qui contient le code Python pour l’analyseur syntaxique du module 1. Ce fichier sert de support pour l’exécution et la mise en forme du code de parsing, ainsi que pour l’analyse des programmes écrits pour la machine de Turing de M. del Vigna (MTddV). Dans ce fichier, vous trouverez le code de parsing (comme celui que nous avons décrit précédemment) ainsi que les tests et la documentation liés.
+
+**err_programme_mtddv.ts** :
+
+Ce fichier .ts contient un programme MTddV qui présente des erreurs syntaxiques ou de structure. Il sert de cas de test pour vérifier que l’analyseur syntaxique est capable de détecter les erreurs et de les rapporter correctement dans le module d’extraction et d’écriture. L’utilisation de ce fichier aide à vérifier que l’analyseur remplit bien ses fonctions de détection d’erreurs.
+
+**programme_mtddv.ts** :
+
+Ce fichier .ts contient un autre programme MTddV, sans erreurs syntaxiques ou structurelles. Ce programme sert d’exemple de cas correct pour valider que l’analyseur syntaxique peut interpréter correctement un code MTddV valide. L’analyseur devrait être capable de parser ce fichier sans générer d’erreurs, et le résultat devrait être sauvegardé dans un fichier indiquant un parsing sans erreurs.
+
+**README.md** :
+
+Ce fichier est un document en Markdown qui fournit probablement des explications et des instructions sur le projet. Il peut contenir des informations sur la configuration, les objectifs, la structure du code, et la façon d’utiliser l’analyseur syntaxique. Le fichier README.md est souvent essentiel dans un projet car il aide les utilisateurs et les développeurs à comprendre le fonctionnement et l’objectif du code.
+
+**results** :
+
+Ce dossier contient les fichiers de sortie générés par l’analyseur syntaxique. En fonction de la présence ou non d’erreurs dans les fichiers analysés (err_programme_mtddv.ts ou programme_mtddv.ts), l’analyseur crée des fichiers de sortie au format JSON (parsed_structure_with_errors.json ou parsed_structure_valid.json) qui détaillent la structure analysée et les éventuelles erreurs rencontrées.
