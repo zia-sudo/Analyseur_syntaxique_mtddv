@@ -5,7 +5,7 @@ si (1) D I boucle
                 si (1) 0 I D I }
             }
 }
-boucle
+buocle
     si (0) G }
     si (1) fin }
     }

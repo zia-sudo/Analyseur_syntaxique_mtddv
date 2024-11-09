@@ -68,38 +68,37 @@
                     ]
                 },
                 {
-                    "type": "boucle",
+                    "type": "error",
+                    "value": "unknown instruction 'buocle'"
+                },
+                {
+                    "type": "si",
+                    "condition": "0",
                     "content": [
                         {
-                            "type": "si",
-                            "condition": "0",
-                            "content": [
-                                {
-                                    "type": "instruction",
-                                    "value": "G"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "si",
-                            "condition": "1",
-                            "content": [
-                                {
-                                    "type": "fin"
-                                }
-                            ]
+                            "type": "instruction",
+                            "value": "G"
                         }
                     ]
                 },
                 {
-                    "type": "instruction",
-                    "value": "I"
-                },
-                {
-                    "type": "end_marker",
-                    "value": "#"
+                    "type": "si",
+                    "condition": "1",
+                    "content": [
+                        {
+                            "type": "fin"
+                        }
+                    ]
                 }
             ]
+        },
+        {
+            "type": "instruction",
+            "value": "I"
+        },
+        {
+            "type": "end_marker",
+            "value": "#"
         }
     ],
     "errors": [
@@ -108,12 +107,12 @@
             "position": 10
         },
         {
-            "error": "Missing closing '}' for 'si' block",
-            "position": 51
+            "error": "Unknown instruction 'buocle'",
+            "position": 35
         },
         {
-            "error": "Expected '}' to close 'si' block",
-            "position": 51
+            "error": "'fin' outside of any 'boucle' block",
+            "position": 46
         }
     ]
 }
