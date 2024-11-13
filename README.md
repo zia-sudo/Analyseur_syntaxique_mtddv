@@ -1,4 +1,4 @@
-# Projet Calculabilités - Générateur Automatique de Pré et Post Conditions pour MTddV - Module 1
+# Projet Calculabilités(Cours M2S1 INALCO) - Générateur Automatique de Pré et Post Conditions pour MTddV - Module 1
 
 ## Objectif général du projet
 
